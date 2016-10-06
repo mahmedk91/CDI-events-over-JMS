@@ -1,0 +1,1 @@
+mvn clean install -f "C:\Users\IBM_ADMIN\workspace\CDI-events-over-JMS\webapp2" -P pluto

@@ -1,0 +1,101 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>thesis.project</groupId>
+  <artifactId>webapp2</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>webapp2 Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <repositories>
+    <repository>
+        <id>JBoss repository</id>
+        <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+    </repository>
+</repositories>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+   <!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+	<dependency>
+	    <groupId>javax.servlet</groupId>
+	    <artifactId>servlet-api</artifactId>
+	    <version>2.5</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/javax.enterprise/cdi-api -->
+	<dependency>
+	    <groupId>javax.enterprise</groupId>
+	    <artifactId>cdi-api</artifactId>
+	    <version>1.1</version>
+	</dependency>
+	    <!-- for JMS -->
+    <dependency>
+	    <groupId>javax.jms</groupId>
+	    <artifactId>jms-api</artifactId>
+	    <version>1.1-rev-1</version>
+	</dependency>
+	<dependency>
+	    <groupId>com.sun.messaging.mq</groupId>
+	    <artifactId>imq</artifactId>
+	    <version>4.6-b01</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.apache.activemq</groupId>
+	    <artifactId>activemq-all</artifactId>
+	    <version>5.14.0</version>
+	</dependency>
+	
+  </dependencies>
+  
+  <build>
+    <finalName>webapp2</finalName>
+    <plugins>
+         <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>2.5.1</version>
+            <configuration>
+               <source>1.6</source>
+               <target>1.6</target>
+            </configuration>
+         </plugin>
+         <plugin>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>2.2</version>
+            <!-- don't archive classes so that the CDI implementation can 
+               find the bean -->
+            <configuration>
+               <archiveClasses>false</archiveClasses>
+            </configuration>
+         </plugin>
+      </plugins>
+  </build>
+  
+  <profiles>
+      <profile>
+         <id>pluto</id>
+         <dependencies>
+            <dependency>
+               <groupId>org.jboss.weld.servlet</groupId>
+               <artifactId>weld-servlet</artifactId>
+               <version>2.3.1.Final</version>
+               <scope>compile</scope>
+            </dependency>
+            <dependency>
+               <groupId>com.sun.faces</groupId>
+               <artifactId>jsf-impl</artifactId>
+               <version>2.2.13</version>
+            </dependency>
+            <dependency>
+               <groupId>com.sun.faces</groupId>
+               <artifactId>jsf-api</artifactId>
+               <version>2.2.13</version>
+            </dependency>
+         </dependencies>
+      </profile>
+   </profiles>
+</project>
